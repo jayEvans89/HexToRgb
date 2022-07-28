@@ -6,11 +6,11 @@
     <form>
       <div>
         <label for="hexCode" :class="darkOrLightText">Hex:</label>
-        <input id="hexCode" :class="darkOrLightText" type="string" v-model="hexCode" @input="convertToRGB" />
+        <input id="hexCode" data-test-id="hexInput" :class="darkOrLightText" type="string" v-model="hexCode" @input="convertToRGB" />
       </div>
       <div>
         <label for="rgbCode" :class="darkOrLightText">Rgb:</label>
-        <input id="rgbCode" :class="darkOrLightText" type="string" v-model="rgbCode" @input="convertToHex" />
+        <input id="rgbCode" data-test-id="rgbaInput" :class="darkOrLightText" type="string" v-model="rgbCode" @input="convertToHex" />
       </div>
     </form>
   </main>
@@ -60,8 +60,8 @@ function convertToRGB() {
   if (aRgbHex) {
     const aRgb = `${parseInt(aRgbHex[0], 16)}, ${parseInt(aRgbHex[1], 16)}, ${parseInt(aRgbHex[2], 16)}`
     rgbCode.value = aRgb
-    saveToLocalStorage()
   }
+  saveToLocalStorage()
 }
 
 /**
