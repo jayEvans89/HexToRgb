@@ -1,32 +1,37 @@
-import { shallowMount, VueWrapper } from '@vue/test-utils'
+import { act, fireEvent, render, screen } from '@testing-library/svelte'
 
-import App from './App.vue'
+import App from './App.svelte'
 
-let wrapper: VueWrapper<any>
-
-const findHexInput = () => wrapper.find('[data-test-id="hexInput"')
-const findRgbaInput = () => wrapper.find('[data-test-id="rgbaInput"]')
+const findHexInput = () => screen.findByTestId('hexInput')
+const findRgbInput = () => screen.findByTestId('rgbaInput')
 
 describe('Main app', () => {
   it('should convert hex code to rgba', async () => {
-    wrapper = shallowMount(App)
-    const hexInput = findHexInput().element as HTMLInputElement
-    hexInput.value= '#19ff02'
+    render(App)
+    const hexInput = await findHexInput() as HTMLInputElement
 
-    await findHexInput().trigger('input')
+    await act(() => fireEvent.input(hexInput, {
+      target: {
+        value: '#19ff02'
+      }
+    }))
 
-    const rgbaInput = findRgbaInput().element as HTMLInputElement
-    expect(rgbaInput.value).toBe('25, 255, 2')
+    const rgbInput = await findRgbInput() as HTMLInputElement
+    expect(rgbInput.value).toBe('25, 255, 2')
   })
 
   it('should convert rgba code to hex', async () => {
-    wrapper = shallowMount(App)
-    const rgbInput = findRgbaInput().element as HTMLInputElement
-    rgbInput.value = '0, 0, 0'
+    render(App)
+    const rgbInput = await findRgbInput() as HTMLInputElement
 
-    await findRgbaInput().trigger('input')
+    await act(() => fireEvent.input(rgbInput, {
+      target: {
+        value: '0, 0, 0'
+      }
+    }))
 
-    const hexInput = findHexInput().element as HTMLInputElement
+    const hexInput = await findHexInput() as HTMLInputElement
+    console.log(hexInput.value)
     expect(hexInput.value).toBe('#000000')
   })
 })
