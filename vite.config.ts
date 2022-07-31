@@ -1,8 +1,9 @@
-import vue from '@vitejs/plugin-vue'
-import { defineConfig } from 'vitest/config'
+/// <reference types="vitest" />
+import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [svelte()],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -14,4 +15,3 @@ export default defineConfig({
     }
   }
 })
-

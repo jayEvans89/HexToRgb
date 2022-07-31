@@ -1,113 +1,29 @@
 {
-  "name": "hex-to-rgb",
+  "name": "vite-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "vitest",
     "test-ui": "vitest --ui",
     "coverage": "vitest run --coverage"
   },
-  "dependencies": {
-    "vue": "^3.2.37"
-  },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^3.0.0",
-    "@vitest/ui": "^0.19.1",
-    "@vue/test-utils": "^2.0.2",
-    "c8": "^7.12.0",
-    "eslint": "^8.20.0",
+    "@sveltejs/vite-plugin-svelte": "^1.0.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/svelte": "^3.1.3",
+    "@tsconfig/svelte": "^3.0.0",
     "jsdom": "^20.0.0",
-    "sass": "^1.53.0",
-    "stylelint": "^14.9.1",
-    "stylelint-config-recommended-vue": "^1.4.0",
-    "stylelint-config-sass-guidelines": "^9.0.1",
-    "stylelint-config-standard": "^26.0.0",
+    "svelte": "^3.49.0",
+    "svelte-check": "^2.8.0",
+    "svelte-preprocess": "^4.10.7",
+    "tslib": "^2.4.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.0",
-    "vitest": "^0.19.1",
-    "vue-tsc": "^0.38.4"
-  },
-  "eslintConfig": {
-    "root": true,
-    "globals": {
-      "Sentry": true,
-      "defineProps": "readonly",
-      "defineEmits": "readonly",
-      "defineExpose": "readonly",
-      "withDefaults": "readonly"
-    },
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/vue3-recommended",
-      "@vue/standard",
-      "@vue/typescript/recommended"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 2020
-    },
-    "rules": {
-      "camelcase": "off",
-      "space-before-function-paren": "off",
-      "@typescript-eslint/camelcase": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        {
-          "ignoreRestSiblings": true
-        }
-      ],
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "vue/max-attributes-per-line": [
-        "error",
-        {
-          "singleline": {
-            "max": 3
-          },
-          "multiline": {
-            "max": 1
-          }
-        }
-      ],
-      "func-call-spacing": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "tests/**/*.ts"
-        ],
-        "rules": {
-          "@typescript-eslint/no-explicit-any": [
-            "off"
-          ]
-        }
-      }
-    ]
-  },
-  "stylelint": {
-    "extends": [
-      "stylelint-config-sass-guidelines",
-      "stylelint-config-recommended-vue",
-      "stylelint-config-html/vue"
-    ],
-    "rules": {
-      "max-nesting-depth": 3,
-      "selector-class-pattern": null,
-      "order/properties-alphabetical-order": null,
-      "at-rule-no-unknown": [
-        true,
-        {
-          "ignoreAtRules": [
-            "use",
-            "forward",
-            "include"
-          ]
-        }
-      ]
-    }
+    "vitest": "^0.19.1"
   }
 }
